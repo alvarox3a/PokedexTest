@@ -1,7 +1,7 @@
 # PokedexTest
 
 This project is a React Native application. Follow the instructions below to start the bundler, compile the app for iOS and Android, and run the tests.
-
+https://reactnative.dev/docs/set-up-your-environment
 ## Prerequisites
 
 Before starting, ensure you have installed the npm dependencies:
