@@ -5,6 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "iosr": "react-native run-ios --configuration Release",
+    "androidr": "react-native run-android --mode=release",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"

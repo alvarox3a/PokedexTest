@@ -36,7 +36,7 @@ export const PokemonScreen = () => {
         return <ActivityIndicator size="large" style={{ marginVertical: 20 }} />;
     }, [loading]);
 
-    if (error) return <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>;
+    if (error) return <Text style={styles.errorText}>{error}</Text>;
     if (!pokemons && loading) return <ActivityIndicator size="large" style={{ flex: 1 }} />;
     if (!pokemons && !loading) return null;
 
@@ -73,5 +73,12 @@ const styles = StyleSheet.create({
     },
     columnWrapper: {
         gap: LAYOUT.MARGIN
+    },
+    errorText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: THEME.red,
+        textAlign: 'center',
+        marginTop: LAYOUT.MARGIN
     }
 });

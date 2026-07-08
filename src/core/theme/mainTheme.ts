@@ -1,5 +1,5 @@
 export const THEME = {
-    blue: '#2a75bb',
-    red: '#FF0000',
+    blue: '#5da9efff',
+    red: '#f35a5aff',
     yellow: '#ffcb05'
 }
