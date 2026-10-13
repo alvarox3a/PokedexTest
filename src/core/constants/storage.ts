@@ -1,3 +1,4 @@
 export const STORAGE_KEYS = {
-    pokes: "POKES"
+    pokes: "POKES",
+    favorites: "FAVORITE_POKES"
 }

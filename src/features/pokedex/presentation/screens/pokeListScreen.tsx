@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { usePokemon } from '../hooks/usePoke';
 import { PokemonItemMemo } from '../components/pokeItem';
@@ -42,6 +42,9 @@ export const PokemonScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: THEME.red }}>
+            <Pressable onPress={() => navigation.navigate('Favorites')}>
+                <Text>Lista de favoritos</Text>
+            </Pressable>
             <FlatList
                 data={pokemons}
                 keyExtractor={keyExtractor}

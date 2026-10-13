@@ -6,7 +6,7 @@ import { CustomImage } from "../../../../core/components/customImage";
 
 interface PokemonItemProps {
     pokemon: Poke;
-    onPress: () => void;
+    onPress?: () => void;
 }
 
 function PokemonItem({ pokemon, onPress }: PokemonItemProps) {

@@ -2,6 +2,7 @@ import { createStaticNavigation, StaticParamList } from '@react-navigation/nativ
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PokemonScreen } from '../screens/pokeListScreen';
 import PokeDetail from '../screens/pokeDetail';
+import FavoritesScreen from '../screens/favoritesScreen';
 
 const RootStack = createNativeStackNavigator({
     screens: {
@@ -12,6 +13,10 @@ const RootStack = createNativeStackNavigator({
         PokemonDetail: {
             screen: PokeDetail,
             options: { title: 'Pokemon', headerBackTitle: "Atras", headerTitleAlign: 'center' },
+        },
+        Favorites: {
+            screen: FavoritesScreen,
+            options: { title: 'Favoritos', headerBackTitle: "Atras", headerTitleAlign: 'center' },
         },
     },
 });
