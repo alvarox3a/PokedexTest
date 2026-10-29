@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Poke } from '../../domain/entities/poke';
 import { FavoritesDataSource } from '../../data/datasources/favoritesDataSource';
 import { FavoritesRepositoryImpl } from '../../domain/repositories/FavoritesRepositoryImp';
@@ -15,23 +15,23 @@ const isFavoriteUseCase = new IsFavoriteUseCase(repository);
 export const useFavorites = () => {
     const [favorites, setFavorites] = useState<Poke[]>([]);
 
-    const fetchFavorites = () => {
+    const fetchFavorites = useCallback(() => {
         const result = getFavoritesUseCase.execute();
         setFavorites(result);
-    }
+    }, []);
 
-    const toggleFavorite = (poke: Poke) => {
+    const toggleFavorite = useCallback((poke: Poke) => {
         toggleFavoriteUseCase.execute(poke);
         fetchFavorites();
-    }
+    }, [fetchFavorites]);
 
-    const isFavorite = (poke: Poke) => {
+    const isFavorite = useCallback((poke: Poke) => {
         return isFavoriteUseCase.execute(poke);
-    }
+    }, []);
 
     useEffect(() => {
         fetchFavorites();
-    }, []);
+    }, [fetchFavorites]);
 
     return { favorites, fetchFavorites, toggleFavorite, isFavorite };
 };

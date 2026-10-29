@@ -20,6 +20,11 @@ describe('PokemonRepositoryImpl', () => {
       other: { 'official-artwork': { front_default: 'https://example.com/artwork/25.png' } },
     },
     types: [{ slot: 1, type: { name: 'electric', url: '' } }],
+    abilities: [{ is_hidden: false, slot: 1, ability: { name: 'lightning-rod', url: '' } }],
+    stats: [
+      { base_stat: 35, effort: 0, stat: { name: 'hp', url: '' } },
+      { base_stat: 90, effort: 2, stat: { name: 'speed', url: '' } },
+    ],
   };
 
   beforeEach(() => {
@@ -42,6 +47,9 @@ describe('PokemonRepositoryImpl', () => {
         height: 0.4,
         weight: 6.0,
         types: ['electric'],
+        baseExperience: 112,
+        abilities: ['lightning rod'],
+        stats: [{ name: 'hp', value: 35 }, { name: 'speed', value: 90 }],
       });
     });
 
@@ -69,6 +77,9 @@ describe('PokemonRepositoryImpl', () => {
         height: 0.4,
         weight: 6.0,
         types: ['electric'],
+        baseExperience: 112,
+        abilities: ['lightning rod'],
+        stats: [{ name: 'hp', value: 35 }, { name: 'speed', value: 90 }],
       }]);
     });
 

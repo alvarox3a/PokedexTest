@@ -62,6 +62,7 @@ jest.mock('@react-navigation/native', () => {
       navigate: jest.fn(),
       goBack: jest.fn(),
     }),
+    useFocusEffect: (effect) => React.useEffect(effect, [effect]),
     createStaticNavigation: jest.fn((Stack) => {
       const NavigationMock = ({ children }) => {
         return React.createElement(React.Fragment, null, children);

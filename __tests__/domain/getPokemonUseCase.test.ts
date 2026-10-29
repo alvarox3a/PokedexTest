@@ -14,6 +14,9 @@ describe('GetPokemonUseCase', () => {
     height: 0.4,
     weight: 6.0,
     types: ['electric'],
+    baseExperience: 112,
+    abilities: ['static'],
+    stats: [{ name: 'hp', value: 35 }],
   };
 
   beforeEach(() => {

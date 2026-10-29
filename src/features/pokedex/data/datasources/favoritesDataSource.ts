@@ -8,7 +8,13 @@ export class FavoritesDataSource {
         const cachedData = storage.getString(STORAGE_KEYS.favorites);
         console.log(cachedData)
         if (cachedData) {
-            return JSON.parse(cachedData);
+            // Los favoritos guardados antes de agregar estos campos no los tienen
+            return JSON.parse(cachedData).map((poke: Partial<Poke>) => ({
+                baseExperience: 0,
+                abilities: [],
+                stats: [],
+                ...poke,
+            }) as Poke);
         }
         return [];
     }

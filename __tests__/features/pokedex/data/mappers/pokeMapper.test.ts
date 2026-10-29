@@ -13,6 +13,11 @@ describe('PokeMapper', () => {
       other: { 'official-artwork': { front_default: 'https://example.com/artwork/25.png' } },
     },
     types: [{ slot: 1, type: { name: 'electric', url: '' } }],
+    abilities: [{ is_hidden: false, slot: 1, ability: { name: 'lightning-rod', url: '' } }],
+    stats: [
+      { base_stat: 35, effort: 0, stat: { name: 'hp', url: '' } },
+      { base_stat: 90, effort: 2, stat: { name: 'speed', url: '' } },
+    ],
   };
 
   it('debería mapear correctamente un DTO completo al modelo de dominio', () => {
@@ -25,6 +30,12 @@ describe('PokeMapper', () => {
     expect(result.height).toBe(0.4);
     expect(result.weight).toBe(6.0);
     expect(result.types).toEqual(['electric']);
+    expect(result.baseExperience).toBe(112);
+    expect(result.abilities).toEqual(['lightning rod']); // Guiones reemplazados por espacios
+    expect(result.stats).toEqual([
+      { name: 'hp', value: 35 },
+      { name: 'speed', value: 90 },
+    ]);
   });
 
   it('debería manejar la ausencia de sprite predeterminado y de artwork oficial', () => {
@@ -44,5 +55,21 @@ describe('PokeMapper', () => {
 
     expect(result.sprite).toBe('');
     expect(result.imageUrl).toBe('');
+  });
+
+  it('debería usar valores por defecto si faltan habilidades, estadísticas o experiencia base', () => {
+    const result = PokeMapper.toDomain({
+      id: 1,
+      name: 'bulbasaur',
+      base_experience: null,
+      height: 7,
+      weight: 69,
+      sprites: { front_default: null },
+      types: [{ slot: 1, type: { name: 'grass', url: '' } }],
+    });
+
+    expect(result.baseExperience).toBe(0);
+    expect(result.abilities).toEqual([]);
+    expect(result.stats).toEqual([]);
   });
 });

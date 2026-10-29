@@ -11,6 +11,9 @@ export class PokeMapper {
             height: dto.height / 10, // Convierte decímetros a metros
             weight: dto.weight / 10, // Convierte hectogramos a kilogramos
             types: dto.types.map(t => t.type.name),
+            baseExperience: dto.base_experience ?? 0,
+            abilities: (dto.abilities ?? []).map(a => a.ability.name.replace(/-/g, ' ')),
+            stats: (dto.stats ?? []).map(s => ({ name: s.stat.name, value: s.base_stat })),
         };
     }
 }

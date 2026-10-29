@@ -3,12 +3,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PokemonScreen } from '../screens/pokeListScreen';
 import PokeDetail from '../screens/pokeDetail';
 import FavoritesScreen from '../screens/favoritesScreen';
+import { FavoritesButton, PokedexLens } from '../components/favoritesButton';
+import { THEME } from '../../../../core/theme/mainTheme';
 
 const RootStack = createNativeStackNavigator({
+    screenOptions: {
+        headerStyle: { backgroundColor: THEME.red },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+        headerShadowVisible: false,
+    },
     screens: {
         Home: {
             screen: PokemonScreen,
-            options: { title: 'PokeDex', headerTitleAlign: 'center' }
+            options: {
+                title: 'PokeDex',
+                headerTitleAlign: 'center',
+                headerLeft: () => <PokedexLens />,
+                headerRight: () => <FavoritesButton />,
+            }
         },
         PokemonDetail: {
             screen: PokeDetail,

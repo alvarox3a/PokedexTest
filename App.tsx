@@ -8,7 +8,7 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={'dark-content'} />
+      <StatusBar barStyle={'light-content'} />
       <PokeNavigator />
     </SafeAreaProvider>
   );

@@ -1,3 +1,8 @@
+export interface PokeStat {
+    name: string;
+    value: number;
+}
+
 export interface Poke {
     id: number;
     name: string;
@@ -6,4 +11,7 @@ export interface Poke {
     height: number;
     weight: number;
     types: string[];
+    baseExperience: number;
+    abilities: string[];
+    stats: PokeStat[];
 }
